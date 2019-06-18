@@ -10,6 +10,10 @@ $email =  mysqli_escape_string($connect, $_POST['email']);
 $password =  mysqli_escape_string($connect, $_POST['password']);
 $confirm_senha =  mysqli_escape_string($connect, $_POST['repassword']);
 
+
+if (empty($nome) || empty($email) || empty($password)) {
+	header("Location: index.php?emptyfields");
+}
 if ($password !== $confirm_senha) {
 	header("Location: index.php?senha incompativeis");
 	exit();
