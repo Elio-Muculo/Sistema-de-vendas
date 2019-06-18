@@ -1,39 +1,35 @@
-.painel {
-    margin: 10px 0;
-    padding: 10px;
-    width: 445px;
-}
+<style>
+    @media (min-width: 768px) {
+        .search {
+            min-width: 400px;
+        }
 
-.novidades {
-    float: left;
-}
 
-.mais-vendidos {
-    float: right;
-}
+        .mt-4,
+        .my-4 {
+            margin-top: 0 !important;
+        }
 
-.painel li {
-    display: inline-block;
-    vertical-align: top;
-    width: 140px;
-    margin: 2px;
-    padding-bottom: 10px;
-}
+        .hide-block {
+            display: flex !important;
+            ;
+        }
 
-.painel h2 {
-    font-size: 24px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
+    }
 
-.painel a {
-    color: #333;
-    font-size: 14px;
-    text-align: center;
-    text-decoration: none;
-}
+    li {
+        list-style: none;
+    }
 
-.novidades {
-    background-color: #F5DCDC;
-}
+    .painel li a figure img {
+        width: 100%;
+    }
+
+    .d-painel div a figure img {
+        width: 100%;
+    }
+
+    .hide-block {
+        display: none;
+    }
+</style>
