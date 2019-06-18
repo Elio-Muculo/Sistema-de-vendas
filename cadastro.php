@@ -9,6 +9,12 @@ $nome =  mysqli_escape_string($connect, $_POST['nome']);
 $email =  mysqli_escape_string($connect, $_POST['email']);
 $password =  mysqli_escape_string($connect, $_POST['password']);
 $confirm_senha =  mysqli_escape_string($connect, $_POST['repassword']);
+
+if ($password !== $confirm_senha) {
+	header("Location: index.php?senha incompativeis");
+	exit();
+}
+
 $pass = md5($password);
 
 $sql = "INSERT INTO usuarios (id, nome, Email, senha) VALUES (NULL, '$nome', '$email', md5('$password'))";
