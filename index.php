@@ -32,47 +32,10 @@ mysqli_close($connect);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="Bv4/css/bootstrap.min.css">
-    <!--    <link rel="stylesheet" href="css/estillos.css">-->
+    <link rel="stylesheet" href="css/estillos.css">
     <link rel="stylesheet" href="fontawesome-free-5.8.2-web/css/all.css">
     <title>Teste 6</title>
 </head>
-
-
-<style>
-    @media (min-width: 768px) {
-        .search {
-            min-width: 400px;
-        }
-
-
-        .mt-4,
-        .my-4 {
-            margin-top: 0 !important;
-        }
-
-        .hide-block {
-            display: flex !important;
-            ;
-        }
-
-    }
-
-    li {
-        list-style: none;
-    }
-
-    .painel li a figure img {
-        width: 100%;
-    }
-
-    .d-painel div a figure img {
-        width: 100%;
-    }
-
-    .hide-block {
-        display: none;
-    }
-</style>
 
 <body style="padding-top: 4.5rem; background-color: rgba(231, 226, 219, 0.712);">
     <div class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-3">
