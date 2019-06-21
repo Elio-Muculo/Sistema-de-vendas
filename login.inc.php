@@ -38,7 +38,7 @@ $pass = mysqli_real_escape_string($connect, $_POST['password']);
         exit();
       }
     }else {
-      header("Location: cadastro.inc.php?create new account");
+      header("Location: cadastro.php?create new account");
       exit();
     }
   }

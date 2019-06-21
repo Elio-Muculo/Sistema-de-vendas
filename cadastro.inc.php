@@ -1,57 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$servername = "localhost";
+$username = "root";
+$pass = "";
+$db_name = "moz_tech";
+$connect = mysqli_connect($servername, $username, $pass, $db_name);
 
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <!--    VIEWPORT-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--    BOOTSTRAP-->
-    <link rel="stylesheet" href="Bv4/css/bootstrap.min.css">
-    <!--    MATERIALIZE-->
-    <!--    <link rel="stylesheet" href="Materialize/materialize.min.css">-->
-</head>
+$nome =  mysqli_escape_string($connect, $_POST['nome']);
+$email =  mysqli_escape_string($connect, $_POST['email']);
+$password =  mysqli_escape_string($connect, $_POST['password']);
+$confirm_senha =  mysqli_escape_string($connect, $_POST['repassword']);
 
 
-<body>
+if (empty($nome) || empty($email) || empty($password)) {
+	header("Location: index.php?emptyfields");
+}
+if ($password !== $confirm_senha) {
+	header("Location: index.php?senha incompativeis");
+	exit();
+}
 
-    <header class="text-center mt-3 pt-3 pt-0">
-        <h4 class="text-uppercase text-dark">Bem - Vindo Ao Tech-Moz</h4>
-        <p class="py-3 text-capitalize font-weight-light text-dark">Não perca tempo. Encontre aqui os melhores equipamentos do mercado informatico</p>
-    </header>
+$pass = md5($password);
 
-    <section class="container shadow p-3 mb-5 bg-white rounded-2 w-25 w-sm-25 border border-info">
-        <h4 class="text-center">CADASTRE - SE</h4>
+$sql = "INSERT INTO usuarios (id, nome, Email, senha) VALUES (NULL, '$nome', '$email', md5('$password'))";
 
-        <form action="cadastro.php" method="POST" class="d-flex flex-column p-2">
-            <div class="form-group">
-                <label for="">Nome</label>
-                <input type="text" name="nome" class="form-control form-control-md" required>
-            </div>
+if (mysqli_query($connect, $sql)) {
+ // echo "Cadastrado com sucesso";
+ header("Location: index.php");
+}else{
+ echo "Error: ". $sql . "<br>" . mysqli_error($connect);
+}
 
-            <div class="form-group">
-                <label for="">E - mail</label>
-                <input type="text" id="email" name="email" class="form-control form-control-md" required>
-            </div>
 
-            <div class="form-group">
-                <label for="password" class="mt-2">Senha</label>
-                <input type="password" id="password" class="form-control form-control-md" name="password" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password" class="mt-2">Confirmar a Senha</label>
-                <input type="text" id="password" class="form-control form-control-md" name="repassword" required>
-            </div>
-
-            <button type="submit" name="btn_enter" class="btn btn-outline-info btn-lg btn-block mt-2">Cadastre - se</button>
-        </form>
-    </section>
-    <!--    JQUERY-->
-    <script src="jquery/jquery-3.4.1.min.js"></script>
-    <script src="Materialize/materialize.min.js"></script>
-</body>
-
-</html>
+if (mysqli_connect_error()) {
+ echo "Falha ao conectar ". mysqli_connect_error();
+}
+?>
