@@ -43,7 +43,7 @@
 
     <section class="text-center w-25 w-md-25 container">
         <div class="shadow border border-info bg-white">
-            <p class="mt-3 text-dark">Novo no Tech - Moz? <a href="novo_cliente.php">Crie uma Conta.</a> </p>
+            <p class="mt-3 text-dark">Novo no Tech - Moz? <a href="cadastro.php">Crie uma Conta.</a> </p>
         </div>
     </section>
 
