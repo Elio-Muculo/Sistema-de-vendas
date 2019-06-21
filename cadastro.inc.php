@@ -19,9 +19,9 @@ if ($password !== $confirm_senha) {
 	exit();
 }
 
-$pass = md5($password);
+$senha = md5($password);
 
-$sql = "INSERT INTO usuarios (id, nome, Email, senha) VALUES (NULL, '$nome', '$email', md5('$password'))";
+$sql = "INSERT INTO usuarios (id, nome, Email, senha) VALUES (NULL, '$nome', '$email', '$senha')";
 
 if (mysqli_query($connect, $sql)) {
  // echo "Cadastrado com sucesso";

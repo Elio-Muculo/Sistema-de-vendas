@@ -25,7 +25,7 @@
     <section class="container shadow p-3 mb-5 bg-white rounded-2 w-25 w-sm-25 border border-info">
         <h4 class="text-center">CADASTRE - SE</h4>
 
-        <form action="cadastro.php" method="POST" class="d-flex flex-column p-2">
+        <form action="cadastro.inc.php" method="POST" class="d-flex flex-column p-2">
             <div class="form-group">
                 <label for="">Nome</label>
                 <input type="text" name="nome" class="form-control form-control-md" required>
@@ -43,7 +43,7 @@
 
             <div class="form-group">
                 <label for="password" class="mt-2">Confirmar a Senha</label>
-                <input type="text" id="password" class="form-control form-control-md" name="repassword" required>
+                <input type="password" id="password" class="form-control form-control-md" name="repassword" required>
             </div>
 
             <button type="submit" name="btn_enter" class="btn btn-outline-info btn-lg btn-block mt-2">Cadastre - se</button>
