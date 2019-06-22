@@ -156,7 +156,7 @@ mysqli_close($connect);
                                     <a href="produto.php?id=<?=	$produto['id']?>">
                                         <figure>
                                             <img src="img/tech<?=	$produto['id']?>.jpg" alt="<?=	$produto['nome']	?>">
-                                            <figcaption class="py-2 bg-dark text-white text-center"><?=	$produto['nome']?> por <?=	$produto['preco']?></figcaption>
+                                            <figcaption class="py-2 bg-dark text-white text-center"></figcaption>
                                         </figure>
                                     </a>
                                 </li>
@@ -175,7 +175,7 @@ mysqli_close($connect);
                                     <a href="produto.php?id=<?=	$produto['id']?>">
                                         <figure>
                                             <img src="img/tech<?=	$produto['id']?>.jpg" alt="<?=	$produto['nome']	?>">
-                                            <figcaption class="py-2 bg-dark text-white text-center"><?=	$produto['nome']?> por <?=	$produto['preco']?></figcaption>
+                                            <figcaption class="py-2 bg-dark text-white text-center"></figcaption>
                                         </figure>
                                     </a>
                                 </li>
@@ -186,45 +186,45 @@ mysqli_close($connect);
                 </section>
             </div>
 
-            <div class="col-md-6 mt-4">
+            <div class="col-md-6">
                 <section class="painel mais-vendidos">
                     <h4 class="bg-dark text-white py-2 pl-2"><i class="fas fa-shopping-cart mr-2" style="font-size: 30px; color: #fff;"></i>Mais Vendidos</h4>
                     <div class="row">
                         <div class="col-6">
                             <div class="painel">
-                                <?php
-								$conexao	=	mysqli_connect("127.0.0.1",	"root",	"",	"moz_tech");
-								$dados	=	mysqli_query($conexao,	"SELECT	*	FROM	produtos LIMIT 3 OFFSET 6");
-								while	($produto	=	mysqli_fetch_array($dados)):
-							?>
+                            <?php
+              								$conexao	=	mysqli_connect("127.0.0.1",	"root",	"",	"moz_tech");
+              								$dados	=	mysqli_query($conexao,	"SELECT	*	FROM	produtos LIMIT 3 OFFSET 6");
+              								while	($produto	=	mysqli_fetch_array($dados)):
+              							?>
                                 <li class="bg-dark">
                                     <a href="produto.php?id=<?=	$produto['id']?>">
                                         <figure>
                                             <img src="img/tech<?=	$produto['id']?>.jpg" alt="<?=	$produto['nome']	?>">
-                                            <figcaption class="py-2 bg-dark text-white text-center"><?=	$produto['nome']?> por <?=	$produto['preco']?></figcaption>
+                                            <figcaption class="py-2 bg-dark text-white text-center"></figcaption>
                                         </figure>
                                     </a>
                                 </li>
-							 <?php	endwhile;?>
+							               <?php	endwhile;?>
                             </div>
                         </div>
 
                         <div class="col-6">
                             <div class="painel">
-							 <?php
-								$conexao	=	mysqli_connect("127.0.0.1",	"root",	"",	"moz_tech");
-								$dados	=	mysqli_query($conexao,	"SELECT	*	FROM	produtos LIMIT 3 OFFSET 9");
-								while	($produto	=	mysqli_fetch_array($dados)):
-							?>
+              							 <?php
+              								$conexao	=	mysqli_connect("127.0.0.1",	"root",	"",	"moz_tech");
+              								$dados	=	mysqli_query($conexao,	"SELECT	*	FROM	produtos LIMIT 3 OFFSET 9");
+              								while	($produto	=	mysqli_fetch_array($dados)):
+              							?>
                                 <li class="bg-dark">
                                     <a href="produto.php?id=<?=	$produto['id']?>">
                                         <figure>
                                             <img src="img/tech<?=	$produto['id']?>.jpg" alt="<?=	$produto['nome']	?>">
-                                            <figcaption class="py-2 bg-dark text-white text-center"><?=	$produto['nome']?> por <?=	$produto['preco']?></figcaption>
+                                            <figcaption class="py-2 bg-dark text-white text-center"></figcaption>
                                         </figure>
                                     </a>
                                 </li>
-							 <?php	endwhile;?>
+							               <?php	endwhile;?>
                             </div>
                         </div>
                     </div>

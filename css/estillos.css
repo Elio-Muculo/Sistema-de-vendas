@@ -1,35 +1,30 @@
-<style>
-    @media (min-width: 768px) {
-        .search {
-            min-width: 400px;
-        }
-
-
-        .mt-4,
-        .my-4 {
-            margin-top: 0 !important;
-        }
-
-        .hide-block {
-            display: flex !important;
-            ;
-        }
-
+@media screen and (min-width: 768px) {
+    .search {
+        min-width: 400px;
     }
 
-    li {
-        list-style: none;
-    }
-
-    .painel li a figure img {
-        width: 100%;
-    }
-
-    .d-painel div a figure img {
-        width: 100%;
+    .mt-4,
+    .my-4 {
+        margin-top: 0 !important;
     }
 
     .hide-block {
-        display: none;
+        display: flex !important;
     }
-</style>
+}
+
+li {
+    list-style: none;
+}
+
+.painel li a figure img {
+    width: 100%;
+}
+
+.d-painel div a figure img {
+    width: 100%;
+}
+
+.hide-block {
+    display: none;
+}
