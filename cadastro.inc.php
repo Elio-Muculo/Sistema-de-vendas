@@ -12,10 +12,9 @@ $confirm_senha =  mysqli_escape_string($connect, $_POST['repassword']);
 
 
 if (empty($nome) || empty($email) || empty($password)) {
-	header("Location: index.php?emptyfields");
-}
-if ($password !== $confirm_senha) {
-	header("Location: index.php?senha incompativeis");
+	header("Location: cadastro.php?emptyfields");
+}elseif ($password !== $confirm_senha) {
+	header("Location: cadastro.php?senha incompativeis");
 	exit();
 }
 
