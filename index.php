@@ -54,22 +54,25 @@ mysqli_close($connect);
                 </form>
 -->
                 <ul class="navbar-nav ml-auto" style="display: flex; flex-direction: row; justify-content: space-around;">
-                    <li class="nav-item">
+                    <li class="nav-item" tabindex="0" data-toggle="tooltip" title="Favoritos">
                         <a class="nav-link mr-3" href="checkout.html"><i class="far fa-heart" style="font-size: 30px; color: #fff;"></i></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" tabindex="0" data-toggle="tooltip" title="Assist. tecnica">
                         <a class="nav-link mr-3" href="checkout.html"><i class="fas fa-tools" style="font-size: 30px; color: #fff;"></i></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" tabindex="0" data-toggle="tooltip" title="Carrinho de compras">
                         <a class="nav-link mr-3" href="#"><i class="fas fa-cart-plus" style="font-size: 30px; color: #fff;"></i></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link mr-3" href="login.php"><i class="fas fa-sign-in-alt" style="font-size: 30px; color: #fff;"></i></a>
-                    </li>
                 </ul>
-
-                <h5  class="text-white">Ola <?php echo $dados['nome']; ?> </h5>
-                <button type="button" class="btn btn-dark rounded-circle" name="button"><a href="log.php" class="text-white">Sair</a> </button>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       <?php echo   "Bem - vindo ".$dados['nome']; ?>
+                    </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="Cadastro.php">Cadastrar</a>
+                  <a class="dropdown-item" href="log.php">Sair</a>
+                </div>
+              </div>
             </div>
         </nav>
     </div>
@@ -323,8 +326,14 @@ mysqli_close($connect);
     </footer>
 
 
-    <script src="Bv4/js/jquery-3.4.1.min.js">
-    </script>
-    <script src="Bv4/js/bootstrap.min.js"></script>
+    <script src="Bv4/js/jquery-3.4.1.min.js"></script>
     <script src="Bv4/js/bootstrap.bundle.min.js"></script>
+    <script src="Bv4/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
+
 </body></html>
