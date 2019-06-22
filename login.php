@@ -34,7 +34,7 @@
 
             <div class="form-group">
                 <label for="password" class="mt-2">Senha</label>
-                <input type="text" id="password" class="form-control form-control-md" name="password" required>
+                <input type="password" id="password" class="form-control form-control-md" name="password" required>
             </div>
 
             <button type="submit" name="btn" class="btn btn-outline-info btn-lg btn-block mt-2">Entrar</button>
