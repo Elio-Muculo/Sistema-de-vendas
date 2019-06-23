@@ -11,8 +11,17 @@ session_start();
 
 if (isset($_POST['btn'])) {
 
-$login = mysqli_real_escape_string($connect, $_POST['nome']);
-$pass = mysqli_real_escape_string($connect, $_POST['password']);
+function clear($input) {
+  global $connect;
+  // sql injection
+  $filter = mysql_real_escape_string($connect, $input);
+
+  // XSS
+  $filter = htmlspecialchars($filter);
+  return $filter;
+}
+$login = clear($_POST['nome']);
+$pass = clear($_POST['password']);
 
   if (empty($login) || empty($pass)) {
     // redirect to login if there has empty fields...

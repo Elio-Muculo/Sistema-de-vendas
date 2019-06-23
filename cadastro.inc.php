@@ -5,10 +5,20 @@ $pass = "";
 $db_name = "moz_tech";
 $connect = mysqli_connect($servername, $username, $pass, $db_name);
 
-$nome =  mysqli_escape_string($connect, $_POST['nome']);
-$email =  mysqli_escape_string($connect, $_POST['email']);
-$password =  mysqli_escape_string($connect, $_POST['password']);
-$confirm_senha =  mysqli_escape_string($connect, $_POST['repassword']);
+function clear($input) {
+	global $connect;
+	// sql injection
+	$filter = mysql_real_escape_string($connect, $input);
+
+	// XSS
+	$filter = htmlspecialchars($filter);
+	return $filter;
+}
+
+$nome =  clear($_POST['nome']);
+$email =  clear($_POST['email']);
+$password =  clear($_POST['password']);
+$confirm_senha =  clear($_POST['repassword']);
 
 
 if (empty($nome) || empty($email) || empty($password)) {
