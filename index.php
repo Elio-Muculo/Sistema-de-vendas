@@ -13,9 +13,9 @@ session_start();
 
 
 //verificar sessao
-if (!isset($_SESSION['logado'])) {
-    header('Location: login.php?signup');
-}
+// if (!isset($_SESSION['logado'])) {
+//     header('Location: login.php?signup');
+// }
 
 //dados
 $id = $_SESSION['id_user'];
@@ -64,15 +64,32 @@ mysqli_close($connect);
                         <a class="nav-link mr-3" href="#"><i class="fas fa-cart-plus" style="font-size: 30px; color: #fff;"></i></a>
                     </li>
                 </ul>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       <?php echo   "Bem - vindo ".$dados['nome']; ?>
-                    </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="Cadastro.php">Cadastrar</a>
-                  <a class="dropdown-item" href="log.php">Sair</a>
-                </div>
-              </div>
+
+                <?php
+                	if (isset($_SESSION['logado'])) {
+                		echo 
+                        '<div class="dropdown">
+		                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            Terminar sessão
+		                    </button>
+			                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			                  <a class="dropdown-item" href="log.php">Sair</a>
+			                </div>
+		              	</div>';
+                	}else{
+                		echo 
+                        '<div class="dropdown">
+		                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Criar Conta
+		                    </button>
+			                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			                  <a class="dropdown-item" href="Cadastro.php">Criar Conta</a>
+			                  <a class="dropdown-item" href="login.php">Registar -se </a>
+			                </div>
+		              	</div>';
+                	}
+                ?>
             </div>
         </nav>
     </div>

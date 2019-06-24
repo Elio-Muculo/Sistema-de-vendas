@@ -14,7 +14,7 @@ if (isset($_POST['btn'])) {
 function clear($input) {
   global $connect;
   // sql injection
-  $filter = mysql_real_escape_string($connect, $input);
+  $filter = mysqli_real_escape_string($connect, $input);
 
   // XSS
   $filter = htmlspecialchars($filter);
