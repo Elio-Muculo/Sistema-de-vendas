@@ -12,10 +12,11 @@ $connect = mysqli_connect($servername, $username, $pass, $db_name);
 session_start();
 
 
-//verificar sessao
-// if (!isset($_SESSION['logado'])) {
-//     header('Location: login.php?signup');
-// }
+// verificar sessao
+if (!isset($_SESSION['logado'])) {
+    header('Location: login.php?signup');
+    exit();
+}
 
 
 if (isset($_SESSION['logado'])) {

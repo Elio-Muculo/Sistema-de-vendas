@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 19, 2019 at 08:58 AM
+-- Generation Time: Jun 26, 2019 at 05:12 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.1
 
@@ -60,28 +60,26 @@ INSERT INTO `produtos` (`id`, `nome`, `preco`, `descricao`, `data`, `vendas`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `senha` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `senha` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `usuarios`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `Email`, `senha`) VALUES
-(1, 'ricardo', 'Dasilva25@gmail.com', '202cb962ac59075b964b07152d234b70'),
-(2, 'Elio', 'emuculo25@gmail.com', '202cb962ac59075b964b07152d234b70'),
-(6, 'Miguel', 'Dasilva25@gmail.com', '250cf8b51c773f3f8dc8b4be867a9a02'),
-(4, 'justyn', 'emuculo25@gmail.com', '202cb962ac59075b964b07152d234b70'),
-(7, 'Dinho', 'D25@gmail.com', 'afcb78d259b0d250f10e0a79a1d00f65');
+INSERT INTO `users` (`id`, `nome`, `email`, `senha`) VALUES
+(1, 'Elio', 'emuculo25@gmail.com', '$2y$10$WapA00tAK3BpnJMdqRUY2.IA7P9W8PjDd1mwbWhItHAc14.X7haMa'),
+(2, 'justyn', 'Dasilva25@gmail.com', '$2y$10$k9BTdvZ67NbNXgK44IFsUuLCstpQsXGopocwGo1bLYRFDl7eEQ25a'),
+(3, 'Dinho', 'eliodark25@gmail.com', '$2y$10$PEYc1wxw5sFsC2XfibB0wOJQU4TMtFqeA7N9fV65xxQ5gJxc9bfB6');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
