@@ -17,12 +17,17 @@ session_start();
 //     header('Location: login.php?signup');
 // }
 
-//dados
-$id = $_SESSION['id_user'];
-$sql = "SELECT * FROM usuarios WHERE id = '$id'";
-$resultado = mysqli_query($connect, $sql);
-$dados = mysqli_fetch_array($resultado);
-mysqli_close($connect);
+
+if (isset($_SESSION['logado'])) {
+    //dados
+    $id = $_SESSION['id_user'];
+    $sql = "SELECT * FROM users WHERE id = '$id'";
+    $resultado = mysqli_query($connect, $sql);
+    $dados = mysqli_fetch_array($resultado);
+    mysqli_close($connect);
+}
+
+
 ?>
 
 <html lang="en">
