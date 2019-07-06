@@ -25,7 +25,7 @@
     <section class="container shadow p-3 mb-5 bg-white rounded-2 w-25 w-sm-25 border border-info">
         <h4 class="text-center">CADASTRE - SE</h4>
 
-        <form action="cadastro.inc.php" method="POST" class="d-flex flex-column p-2">
+        <form action="php_action/cadastro.inc.php" method="POST" class="d-flex flex-column p-2">
             <div class="form-group">
                 <label for="">Nome</label>
                 <input type="text" name="nome" class="form-control form-control-md" required>

@@ -10,4 +10,4 @@ session_unset();
 session_destroy();
 
 //redirecionar usuario
-header('Location: login.php');
+header('Location: ../login.php');

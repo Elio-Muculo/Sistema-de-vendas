@@ -186,13 +186,13 @@ if (isset($_SESSION['logado'])) {
                                         </figure>
                                     </a>
                                 </li>
-							 <?php	endwhile;?>
+                                <?php	endwhile;?>
                             </div>
                         </div>
 
                         <div class="col-6">
                             <div class="painel">
-                               <?php
+                                <?php
 								$conexao	=	mysqli_connect("127.0.0.1",	"root",	"",	"moz_tech");
 								$dados	=	mysqli_query($conexao,	"SELECT	*	FROM produtos LIMIT 3 OFFSET 3");
 								while	($produto	=	mysqli_fetch_array($dados)):
@@ -205,7 +205,7 @@ if (isset($_SESSION['logado'])) {
                                         </figure>
                                     </a>
                                 </li>
-							 <?php	endwhile;?>
+                                <?php	endwhile;?>
                             </div>
                         </div>
                     </div>
@@ -218,7 +218,7 @@ if (isset($_SESSION['logado'])) {
                     <div class="row">
                         <div class="col-6">
                             <div class="painel">
-                            <?php
+                                <?php
               								$conexao	=	mysqli_connect("127.0.0.1",	"root",	"",	"moz_tech");
               								$dados	=	mysqli_query($conexao,	"SELECT	*	FROM	produtos LIMIT 3 OFFSET 6");
               								while	($produto	=	mysqli_fetch_array($dados)):
@@ -231,13 +231,13 @@ if (isset($_SESSION['logado'])) {
                                         </figure>
                                     </a>
                                 </li>
-							               <?php	endwhile;?>
+                                <?php	endwhile;?>
                             </div>
                         </div>
 
                         <div class="col-6">
                             <div class="painel">
-              							 <?php
+                                <?php
               								$conexao	=	mysqli_connect("127.0.0.1",	"root",	"",	"moz_tech");
               								$dados	=	mysqli_query($conexao,	"SELECT	*	FROM	produtos LIMIT 3 OFFSET 9");
               								while	($produto	=	mysqli_fetch_array($dados)):
@@ -250,7 +250,7 @@ if (isset($_SESSION['logado'])) {
                                         </figure>
                                     </a>
                                 </li>
-							               <?php	endwhile;?>
+                                <?php	endwhile;?>
                             </div>
                         </div>
                     </div>
@@ -354,9 +354,12 @@ if (isset($_SESSION['logado'])) {
     <script src="Bv4/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
     </script>
 
-</body></html>
+</body>
+
+</html>

@@ -27,26 +27,26 @@ if (isset($_POST['btn'])) {
 
 
   if (empty($nome) || empty($pass)) {
-    header("Location: login.php?empty fields");
+    header("Location: ../login.php?empty fields");
     exit();
   }else{
     $sql = "SELECT * FROM users WHERE nome = '$nome'";
     $result = mysqli_query($connect, $sql);
     if (mysqli_num_rows($result) < 1) {
-      header("Location: login.php?login=error");
+      header("Location: ../login.php?login=error");
       exit();
     }else{
       if ($dados = mysqli_fetch_array($result)) {
         $hashedPass = password_verify($pass, $dados['senha']);
 
         if ($hashedPass == false) {
-          header("Location: login.php?login=error");
+          header("Location: ../login.php?login=error");
           exit();
         }elseif ($hashedPass == true) {
           $_SESSION['logado'] = true;
           $_SESSION['id_user'] = $dados['id'];
           $_SESSION['name_user'] = $dados['nome'];
-          header("Location: index.php?login=sucess");
+          header("Location: ../index.php?login=sucess");
           exit();
         }
       }

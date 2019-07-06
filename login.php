@@ -26,7 +26,7 @@
     <section class="container shadow p-3 mb-5 bg-white rounded-2 w-25 w-sm-25 border border-info">
         <h4 class="text-center">LOGIN</h4>
 
-        <form action="login.inc.php" method="POST" class="d-flex flex-column p-2">
+        <form action="php_action/login.inc.php" method="POST" class="d-flex flex-column p-2">
             <div class="form-group">
                 <label for="nome">Usuario</label>
                 <input type="text" id="nome" name="nome" class="form-control form-control-md" required>
@@ -50,7 +50,6 @@
 
     <!--    JQUERY-->
     <script src="jquery/jquery-3.4.1.min.js"></script>
-    <script src="Materialize/materialize.min.js"></script>
 </body>
 
 </html>
