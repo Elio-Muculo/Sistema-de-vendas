@@ -30,7 +30,7 @@ include_once 'php_action/produto.php';
                         <img src="img/produtos/foto<?=  $produto['id']  ?>-azul.png" alt="azul">
                     </label>
                 </fieldset>
-                
+
                 <legend>Escolha a quantidade</legend>
                 <input type="number" name="tamanho" id="tamanho" placeholder="0" style="width: 70px;">
                 <input type="submit" class="comprar " value="comprar">

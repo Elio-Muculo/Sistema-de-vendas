@@ -110,10 +110,24 @@ include_once 'includes/header.php';
 
                         </fieldset>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg pull-right">
+                    <button class="btn btn-primary btn-lg pull-right" type='button' data-toggle='modal' data-target='#exampleModal'>
                         <span class="glyphicon glyphicon-thumbs-up"></span>
                         Confirmar Pedido
                     </button>
+                    <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Obrigado por comprar no Tech - Moz</h5>
+                                <!-- Title modal -->
+                              </div>
+                              <div class="modal-body">
+                                <!-- Body -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                 </form>
             </div>
         </div>
