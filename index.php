@@ -20,7 +20,7 @@ if (!isset($_SESSION['logado'])) {
 
 //
 if (isset($_SESSION['logado'])) {
-    //dados
+    //dados vindos da db
     $id = $_SESSION['id_user'];
     $sql = "SELECT * FROM users WHERE id = '$id'";
     $resultado = mysqli_query($connect, $sql);
