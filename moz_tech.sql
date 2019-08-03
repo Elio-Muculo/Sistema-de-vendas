@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 26, 2019 at 05:12 PM
+-- Generation Time: Jul 22, 2019 at 04:33 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.1
 
@@ -31,31 +31,34 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `produtos`;
 CREATE TABLE IF NOT EXISTS `produtos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `preco` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `descricao` text COLLATE utf8_unicode_ci,
+  `nome` varchar(255) DEFAULT NULL,
+  `preco` int(11) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL,
+  `descricao` mediumtext,
   `data` date DEFAULT NULL,
   `vendas` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `produtos`
 --
 
-INSERT INTO `produtos` (`id`, `nome`, `preco`, `descricao`, `data`, `vendas`) VALUES
-(1, 'Fuzzy Cardigan', 'R$ 129,00', 'Esse &eacute; o melhor casaco de Cardig&atilde; que voc&ecirc; j&aacute; viu. Excelente material italiano com estampa desenhada pelos artes&atilde;os da comunidade de Krotor nas ilhas gregas. Compre j&aacute; e receba hoje mesmo pela nossa entrega ajato.', '2013-09-01', 5),
-(2, 'Combo teclado & mouse sem fio', 'R$ 48,95', 'Camiseta confort&aacute;vel ideal para eventos casuais!<br><br>\n\nCamiseta manga curta, gola redonda. Possui estampa de Caveira e descritivo frontal e lisa nas costas.', '2013-10-01', 90),
-(3, 'Cardigan Thelure Basic', 'R$ 296,00', 'Cardigan em &oacute;timo caimento. Ideal fazer sobreposi&ccedil;&atilde;o quando a temperatura cair um pouco.\n<br><br>\nMedidas Modelo:<br>\nAltura: 1,76cm<br>\nPeso: 55Kg<br>\nCintura: 69 cm<br>\nBusto: 89 cm<br>\nQuadril: 93 cm<br>\nCal&ccedil;ado: 38<br>\nManequim: 38<br>\nModelo veste: P.', '2013-09-29', 12),
-(4, 'Casaco Winter', 'R$ 699,00', 'Jaqueta confeccionada em couro ecol&oacute;gico, em tintura vermelha, abotoamento na gola. Fechamento em z&iacute;per. Ideal para compor looks contempor&acirc;neos casuais.\n', '2013-09-20', 3),
-(5, 'Sport Top', 'R$ 89,00', 'Camisa em Algod&atilde;o estampada ideal para uma mulher cl&aacute;ssica, manga longa com abotoamento, fechamento frontal em bot&otilde;es, bolso frontal, barras arredondadas.', '2013-09-27', 45),
-(6, 'Top Basic', 'R$ 45,00', 'Blusa multicolorida com decote em V, a manga longa faz dela uma pe&ccedil;a perfeita para uma ocasi&atilde;o de trabalho. As combina&ccedil;&otilde;es de cores d&atilde;o um toque atual a pe&ccedil;a.', '2013-09-01', 178),
-(7, 'Camiseta Gwol', 'R$ 125,00', 'Camiseta em modelagem reta, mangas curtas e decote canoa. Possui bordados de fios metalizados nos ombros com tem&aacute;tica militar e bras&atilde;o bordado estilizado com canutilhos, mi&ccedil;angas e strass na altura do busto. Ideal para compor looks estilosos e despojados.', '2013-09-01', 84),
-(8, 'Camiseta Tiup', 'R$ 129,00', 'Regata b&aacute;sica em seda. Combina&ccedil;&atilde;o perfeita com cal&ccedil;as jeans, shorts ou saias. Modelagem evas&ecirc;. Combine com acess&oacute;rios, como colares e pulseiras.', '2013-09-03', 123),
-(9, 'Camisa Squares', 'R$ 199,00', 'Camisa em tecido mega confort&aacute;vel. Gola fechada esporte, abotoamento frontal com tira de vista. Mangas compridas com abotoamento duplo. Estampa tropical. Caimento perfeito com cal&ccedil;as jeans.', '2013-09-18', 78),
-(10, 'Top in Slub', 'R$ 118,00', 'Esse &eacute; o melhor casaco de Cardig&atilde; que voc&ecirc; j&aacute; viu. Excelente material italiano com estampa desenhada pelos artes&atilde;os da comunidade de Krotor nas ilhas gregas. Compre j&aacute; e receba hoje mesmo pela nossa entrega ajato.', '2013-09-03', 146),
-(11, 'Shorts Lez a Lez Towel', 'R$ 77,00', 'Sport deluxe &eacute; a tend&ecirc;ncia quent&iacute;ssima deste ver&atilde;o, as roupas s&atilde;o feitas de tecidos inteligentes, formas articuladas e fits inspirados nos esportes de rua. Shorts com modelagem boxer, tecido com toque atoalhado e cord&otilde;es decorativos com ponteiras de metal. Ideal para compor looks charmosos e aut&ecirc;nticos.\n', '2013-09-02', 345),
-(12, 'Camisa Richards Sam', 'R$ 420,00', 'Em 1974 a Richards lan&ccedil;ou no Brasil um novo conceito de roupas, associado a um estilo de vida original, informal e requintado. Qualidade, conforto e exclusividade s&atilde;o compromissos t&atilde;o importantes, a ponto de lan&ccedil;ar doze cole&ccedil;&otilde;es por ano com edi&ccedil;&otilde;es limitadas. Camisa de seda lisa, mangas longas c/ abotoamento nos punhos e ajuste por bot&atilde;o e fechamento frontal por bot&otilde;es. Perfeito para compor looks charmosos e aut&ecirc;nticos.', '2013-09-07', 256);
+INSERT INTO `produtos` (`id`, `nome`, `preco`, `quantidade`, `descricao`, `data`, `vendas`, `status`) VALUES
+(1, 'Headset Gamer Logitech Prodigy', 6415, 162, 'Marca Logitech Modelo 981-000626 Driver 40mm Frequência de Resposta 20Hz - 20KHz Impedância 32 Ohm Sensibilidade 90dB', '2019-04-05', 42, 0),
+(2, 'Combo Teclado + Teclado Gamer', 6480, 91, 'Teclado e Mouse gaming duráveis, totalmente programáveis com teclas de função macro, fácil de implementar meios de comunicação, botões multimídia, bem como as suas preferências mudam de acordo com o ângulo da altura do teclado, ajustável em uma variedade de jogos para atender às necessidades mais exigidas.', '2019-12-18', 50, 0),
+(3, 'Roteador Wireless Intelbras HotSpot 200', 4980, 400, 'Para seu restaurante libera internet após cliente fazer checkin no seu restaurante ou qualquer estabelecimento comercial usando o Facebook. Além de ser um Roteador Wireless Corporativo de ótima qualidade e estabilidade, o Hotspot 300 possui o diferencial de divulgar e promover os estabelecimentos comerciais no Facebook de forma espontânea. Sua principal função é fornecer o acesso á rede sem fio sem a necessidade de senha, apenas com o check-in na página do estabelecimento comercial no Facebook. Além disso, permite a criação de duas redes, uma exclusiva para os clientes e outra para os funcionários, e possui alimentação poe, que une dados e energia num mesmo cabo, garantindo economia na Instalação. ', '2014-03-12', 98, 0),
+(4, 'Cartão de Memoria Sandisk 32gb', 840, 1, 'Tire e salve mais fotos de alta qualidade e vídeo Full HD em seu smartphone ou tablet Android com cartões SanDisk Ultra microSD UHS-I. Com capacidade de armazenamento de até 64GB, eles são o complemento ideal para smartphones e tablets Android. E o aplicativo SanDisk Memory Zone, disponível na loja Google Play, facilita a visualização, o acesso e a cópia de segurança de todos os seus arquivos a partir da memória do seu telefone em um local conveniente.', '2019-02-27', 68, 0),
+(5, 'Memoria Kingston 4GB 1600Mhz DDR3 PC3L CL11', 4780, 1, 'Especificações: \r\n- Compatível com: Notebook\r\n- Capacidade: 8GB\r\n- Velocidade: DDR3L 1600 (PC3 12800)\r\n- CAS Latência: 11\r\n- VDDQ = 1.35V\r\n- Tipo: 204-Pin DDR3 SO-DIMM', '2018-01-10', 145, 0),
+(6, 'HD Externo Seagate Expansion Portatil 1 TB', 5780, 1, 'O disco portátil Seagate® Expansion é compacto e perfeito para ser transportado. Adicione mais espaço de armazenamento instantaneamente ao seu computador e leve arquivos grandes nas suas viagens.\r\n\r\nA instalação é simples e direta, bastando conectar um cabo USB e pronto. O disco é alimentado pelo cabo USB, dispensando uma fonte de alimentação externa. Além disso, ele é reconhecido automaticamente pelo sistema operacional Windows®, então não há software para instalar nem nada para configurar. Salvar arquivos é fácil - é só arrastar e soltar.\r\n\r\nAproveite ao máximo as velocidades de transferência de dados rápidas da interface USB 3.0 conectando o disco a uma porta USB 3.0 SuperSpeed. A interface USB 3.0 é compatível retroativamente com USB 2.0, proporcionando maior flexibilidade', '2019-05-13', 10, 0),
+(7, 'Injustice 2 - PS4', 3200, 1, 'Injustice 2 é a sequência direta de Injustice: Gods Among Us.\r\nCom uma seleção massiva de super-heróis e super-vilões da DC, o jogo permitirá que você customize cada personagem com diferentes equipamentos adquiridos no decorrer da história', '2015-06-02', 345, 0),
+(8, 'Console Sony PS4 1TB', 28000, 1, 'Marca\r\nSony\r\n\r\nLinha\r\nPlayStation\r\n\r\nModelo\r\nPlayStation 4\r\n\r\nSub modelo\r\nSlim\r\n\r\nModelo alfanumérico\r\nCUH-20\r\n\r\nCapacidade\r\n500 GB', '2019-12-10', 27, 0),
+(9, 'HD Externo Portátil Seagate Expansion 3TB', 3000, 1, 'O disco rígido portátil Seagate Expansion oferece uma solução fácil de usar quando você precisa adicionar armazenamento instantaneamente ao seu computador e levar seus arquivos aonde você for.', '2019-04-24', 72, 0),
+(10, 'Teclado Gamer Razer Ornata Chroma', 1500, 1, 'Especificações:\r\n\r\n- Tecnologia Mecha-Membrane Razer\r\n\r\n- Keycaps de altura média\r\n\r\n- Teclas retroiluminadas individualmente\r\n\r\n- Suporte de pulso ergonômico\r\n\r\n- Razer Synapse ativado\r\n\r\n- Teclas totalmente programáveis ??com gravação instantânea de macro\r\n\r\n- Rolagem de 10 teclas\r\n\r\n- Modo de jogo dedicado\r\n\r\n- Capacidade anti-ghost para até 10 pressões de teclas ', '2017-12-13', 114, 0),
+(11, 'Placa Mãe GIGABYTE AMD AM4', 7259, 1, 'CPU:\r\n\r\n\r\n\r\nAM4 Soquete:\r\n\r\n- Processador AMD Ryzen\r\n\r\n- Processador AMD 7ª geração A / Athlon\r\n\r\n\r\nChipset:\r\n\r\n- AMD A320\r\n\r\n\r\n\r\nMemória:\r\n\r\n- 2 x DDR4 DIMM suporta até 32 GB de memória do sistema\r\n\r\n- Arquitetura de memória de canal duplo\r\n\r\n- Suporte para módulos de memória DDR4 3200 (OC) / 2933 (OC) / 2667 * / 2400/2133 MHz \r\n\r\n* Suporte para mais de DDR4 2667 MHz pode variar de CPU.\r\n\r\n- Suporte para módulos de memória DIMM 1Rx8 / 2Rx8 não-protegidos ECC (operam em modo não-ECC)\r\n\r\n- Suporte para módulos de memória DIMM 1Rx8 / 2Rx8 / 1Rx16 não-protegidos ECC não-ECC\r\n\r\n- Suporte para módulos de memória Extreme Memory Profile (XMP)', '2011-02-27', 74, 0),
+(12, 'Controle PS2 Cruzeiro', 1000, 1, '- Compatível 100% com todos os Jogos\r\n- Vibração com motor duplo (Dualshock 2)\r\n- Opera nos modos digital e analógico\r\n- Comprimento do Cabo de 1 metro e 80 centímetros\r\n- Proteção na saída do cabo de controle, evitando rompimento ', '2010-03-12', 95, 0),
+(13, 'Chromecast 2 Hdmi Full HD Wireless', 4850, 80, 'O mundo do entretenimento on line em sua  TV com Google Chromecast 2015. Basta conectar  a interface HDMI da sua TelevisÃ£o e sua rede WiFi  para comeÃ§ar a transmitir. Veja mais detalhes!', '2020-07-21', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -69,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `nome` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `senha` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -76,10 +80,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nome`, `email`, `senha`) VALUES
-(1, 'Elio', 'emuculo25@gmail.com', '$2y$10$WapA00tAK3BpnJMdqRUY2.IA7P9W8PjDd1mwbWhItHAc14.X7haMa'),
-(2, 'justyn', 'Dasilva25@gmail.com', '$2y$10$k9BTdvZ67NbNXgK44IFsUuLCstpQsXGopocwGo1bLYRFDl7eEQ25a'),
-(3, 'Dinho', 'eliodark25@gmail.com', '$2y$10$PEYc1wxw5sFsC2XfibB0wOJQU4TMtFqeA7N9fV65xxQ5gJxc9bfB6');
+INSERT INTO `users` (`id`, `nome`, `email`, `senha`, `status`) VALUES
+(1, 'Elio', 'emuculo25@gmail.com', '$2y$10$WapA00tAK3BpnJMdqRUY2.IA7P9W8PjDd1mwbWhItHAc14.X7haMa', 1),
+(2, 'justyn', 'Dasilva25@gmail.com', '$2y$10$k9BTdvZ67NbNXgK44IFsUuLCstpQsXGopocwGo1bLYRFDl7eEQ25a', 0),
+(3, 'Dinho', 'eliodark25@gmail.com', '$2y$10$PEYc1wxw5sFsC2XfibB0wOJQU4TMtFqeA7N9fV65xxQ5gJxc9bfB6', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

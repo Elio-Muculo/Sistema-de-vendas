@@ -43,11 +43,19 @@ if (isset($_POST['btn'])) {
           header("Location: ../login.php?login=error");
           exit();
         }elseif ($hashedPass == true) {
-          $_SESSION['logado'] = true;
-          $_SESSION['id_user'] = $dados['id'];
-          $_SESSION['name_user'] = $dados['nome'];
-          header("Location: ../index.php?login=sucess");
-          exit();
+          if ($dados['status'] == 1) {
+            $_SESSION['logado'] = true;
+            $_SESSION['id_user'] = $dados['id'];
+            $_SESSION['name_user'] = $dados['nome'];
+            header("Location: ../Admin/index.php?login=sucess");
+            exit();
+          }else {
+            $_SESSION['logado'] = true;
+            $_SESSION['id_user'] = $dados['id'];
+            $_SESSION['name_user'] = $dados['nome'];
+            header("Location: ../index.php?login=sucess");
+            exit();
+          }
         }
       }
     }
