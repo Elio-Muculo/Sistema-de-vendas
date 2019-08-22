@@ -19,6 +19,7 @@ include_once 'includes/header.php';
                     </div>
                     <div class="card-body">
                         <img src="img/tech<?=$_POST['id']?>.jpg" class="img-thumbnail img-responsive hidden-xs">
+<<<<<<< HEAD
 
                         <div class="form-group">
                             <label for="qt">Nome do Produto</label>
@@ -35,6 +36,25 @@ include_once 'includes/header.php';
                         <div class="form-group">
                             <label for="total">Total</label>
                             <input type="text" id="qtotaly" disabled class="form-control text-center">
+=======
+                        <div class="form-group">
+                            <label for="qt">Nome do Produto</label>
+                            <h4><?= $_POST['nome'] ?></h4>
+                        </div>
+                        <div class="form-group">
+                            <label for="qt">Quantidade</label>
+                            <input type="text" disabled id="qtd" value="<?= $_POST['tamanho'] ?>" class="form-control text-center">
+                        </div>
+                        <div class="form-group">
+                            <label for="qt">Preço</label> <br>
+                            <input type="text" disabled id="price" value="<?= $_POST['preco'] ?>" class="form-control text-center">
+                        </div>
+                        <div class="form-group">
+                            <label for="total">Total</label>
+                            <output for="qt valor" class="form-control">
+                                <p id="total"></p>
+                            </output>
+>>>>>>> 518b15a9e0b6d998b00b7aaf00404cfc073405b2
                         </div>
                     </div>
                 </div>
@@ -70,7 +90,11 @@ include_once 'includes/header.php';
 
                             <div class="checkbox">
                                 <label>
+<<<<<<< HEAD
                                     <input type="checkbox" value="sim" name="spam">
+=======
+                                    <input type="checkbox" value="sim" name="spam" checked>
+>>>>>>> 518b15a9e0b6d998b00b7aaf00404cfc073405b2
                                     Confirmar dados.
                                 </label>
                             </div>
@@ -109,7 +133,11 @@ include_once 'includes/header.php';
 
                         </fieldset>
                     </div>
+<<<<<<< HEAD
                     <button class="btn btn-primary btn-lg pull-right sucess" type='button' data-toggle='modal' data-target='#exampleModal'>
+=======
+                    <button class="btn btn-primary btn-lg pull-right" type='button' data-toggle='modal' data-target='#exampleModal'>
+>>>>>>> 518b15a9e0b6d998b00b7aaf00404cfc073405b2
                         <span class="glyphicon glyphicon-thumbs-up"></span>
                         Confirmar Pedido
                     </button>
@@ -122,11 +150,16 @@ include_once 'includes/header.php';
                                 <!-- Title modal -->
                               </div>
                               <div class="modal-body">
+<<<<<<< HEAD
                                 <img src="img/sucesso.png" style="width: 100%;">
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                 </div>
+=======
+                                <!-- Body -->
+                              </div>
+>>>>>>> 518b15a9e0b6d998b00b7aaf00404cfc073405b2
                             </div>
                           </div>
                         </div>
@@ -134,6 +167,7 @@ include_once 'includes/header.php';
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
     <script src="Bv4/js/jquery-3.4.1.min.js"></script>
     <script src="Bv4/js/bootstrap.min.js"></script>
@@ -141,3 +175,18 @@ include_once 'includes/header.php';
 </body>
 </html>
 
+=======
+</body>
+<script src="Bv4/js/jquery-3.4.1.min.js"></script>
+<script src="Bv4/js/bootstrap.min.js"></script>
+<script src="js/bilhetes.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('html').load(function () {
+      alert("OLA");
+    });
+  });
+</script>
+</html>
+>>>>>>> 518b15a9e0b6d998b00b7aaf00404cfc073405b2
