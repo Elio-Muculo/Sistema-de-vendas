@@ -11,23 +11,20 @@ $connect = mysqli_connect($servername, $username, $pass, $db_name);
 //sessao
 session_start();
 
-
 // verificar sessao
 if (!isset($_SESSION['logado'])) {
-    header('Location: login.php?signup');
-    exit();
+	header('Location: login.php?signup');
+	exit();
 }
 
-
+//
 if (isset($_SESSION['logado'])) {
-    //dados
-    $id = $_SESSION['id_user'];
-    $sql = "SELECT * FROM users WHERE id = '$id'";
-    $resultado = mysqli_query($connect, $sql);
-    $dados = mysqli_fetch_array($resultado);
-    mysqli_close($connect);
+	//dados
+	$id = $_SESSION['id_user'];
+	$sql = "SELECT * FROM users WHERE id = '$id'";
+	$resultado = mysqli_query($connect, $sql);
+	$dados = mysqli_fetch_array($resultado);
 }
-
 
 ?>
 
@@ -39,8 +36,9 @@ if (isset($_SESSION['logado'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="Bv4/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estillos.css">
+    <link type="text/css" rel="stylesheet" href="css/jquery.capty.css"/>
     <link rel="stylesheet" href="fontawesome-free-5.8.2-web/css/all.css">
-    <title>Teste 6</title>
+    <title>MOZ-TECH</title>
 </head>
 
 <body style="padding-top: 4.5rem; background-color: rgba(231, 226, 219, 0.712);">
@@ -67,35 +65,36 @@ if (isset($_SESSION['logado'])) {
                         <a class="nav-link mr-3" href="checkout.html"><i class="fas fa-tools" style="font-size: 30px; color: #fff;"></i></a>
                     </li>
                     <li class="nav-item" tabindex="0" data-toggle="tooltip" title="Carrinho de compras">
-                        <a class="nav-link mr-3" href="#"><i class="fas fa-cart-plus" style="font-size: 30px; color: #fff;"></i></a>
+                        <a class="nav-link mr-3" href="carrinho.php"><i class="fas fa-cart-plus" style="font-size: 30px; color: #fff;"></i></a>
                     </li>
+
+                    <?php
+if (isset($_SESSION['logado'])) {
+	echo '
+                        <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+	echo "Bem - vindo " . $dados['nome'];
+	echo '</button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="perfil.php">Meu perfil.</a>
+                        <a class="dropdown-item" href="php_action/log.php">Terminar Sessão.</a>
+                      </div>
+                    </div>
+                          ';
+} else {
+	echo
+		'<div class="dropdown">
+    		                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Criar Conta
+    		                    </button>
+    			                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    			                  <a class="dropdown-item" href="Cadastro.php">Criar Conta</a>
+    			                  <a class="dropdown-item" href="login.php">Registar -se </a>
+    			                </div>
+    		              	</div>';
+}
+?>
                 </ul>
-
-                <?php
-                	if (isset($_SESSION['logado'])) {
-                		echo 
-                        '<div class="dropdown">
-		                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                            Terminar sessão
-		                    </button>
-			                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			                  <a class="dropdown-item" href="log.php">Sair</a>
-			                </div>
-		              	</div>';
-                	}else{
-                		echo 
-                        '<div class="dropdown">
-		                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Criar Conta
-		                    </button>
-			                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			                  <a class="dropdown-item" href="Cadastro.php">Criar Conta</a>
-			                  <a class="dropdown-item" href="login.php">Registar -se </a>
-			                </div>
-		              	</div>';
-                	}
-                ?>
             </div>
         </nav>
     </div>
@@ -171,44 +170,26 @@ if (isset($_SESSION['logado'])) {
                 <section class="painel mais-vendidos">
                     <h4 class="bg-dark text-white py-2 pl-2"><i class="fas fa-hashtag mr-2" style="font-size: 30px; color: #fff;"></i>Novos produtos</h4>
                     <div class="row">
-                        <div class="col-6">
+                     <?php
+$conexao = mysqli_connect("127.0.0.1", "root", "", "moz_tech");
+$dados = mysqli_query($conexao, "SELECT *   FROM    produtos WHERE status = 0 ORDER BY data DESC LIMIT 6");
+while ($produto = mysqli_fetch_array($dados)):
+?>
+                        <div class="col-md-4">
                             <div class="painel">
-                                <?php
-								$conexao	=	mysqli_connect("127.0.0.1",	"root",	"",	"moz_tech");
-								$dados	=	mysqli_query($conexao,	"SELECT	*	FROM	produtos LIMIT 3");
-								while	($produto	=	mysqli_fetch_array($dados)):
-							?>
                                 <li class="bg-dark">
-                                    <a href="produto.php?id=<?=	$produto['id']?>">
+                                    <a href="produto.php?id=<?=$produto['id']?>">
                                         <figure>
-                                            <img src="img/tech<?=	$produto['id']?>.jpg" alt="<?=	$produto['nome']	?>">
-                                            <figcaption class="py-2 bg-dark text-white text-center"></figcaption>
+                                            <img src="img/tech<?=$produto['id']?>.jpg" alt="<?php echo utf8_encode($produto['nome']); ?>" class="content">
+                                            <figcaption class="py-2 bg-dark text-white text-center">
+                                              <?php echo utf8_encode($produto['preco']) . "MZN" ?>
+                                            </figcaption>
                                         </figure>
                                     </a>
                                 </li>
-                                <?php	endwhile;?>
                             </div>
                         </div>
-
-                        <div class="col-6">
-                            <div class="painel">
-                                <?php
-								$conexao	=	mysqli_connect("127.0.0.1",	"root",	"",	"moz_tech");
-								$dados	=	mysqli_query($conexao,	"SELECT	*	FROM produtos LIMIT 3 OFFSET 3");
-								while	($produto	=	mysqli_fetch_array($dados)):
-							?>
-                                <li class="bg-dark">
-                                    <a href="produto.php?id=<?=	$produto['id']?>">
-                                        <figure>
-                                            <img src="img/tech<?=	$produto['id']?>.jpg" alt="<?=	$produto['nome']	?>">
-                                            <figcaption class="py-2 bg-dark text-white text-center"></figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <?php	endwhile;?>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endwhile;?>
                 </section>
             </div>
 
@@ -216,44 +197,26 @@ if (isset($_SESSION['logado'])) {
                 <section class="painel mais-vendidos">
                     <h4 class="bg-dark text-white py-2 pl-2"><i class="fas fa-shopping-cart mr-2" style="font-size: 30px; color: #fff;"></i>Mais Vendidos</h4>
                     <div class="row">
-                        <div class="col-6">
+                    <?php
+$conexao = mysqli_connect("127.0.0.1", "root", "", "moz_tech");
+$dados = mysqli_query($conexao, "SELECT *   FROM    produtos WHERE status = 0 ORDER BY vendas DESC LIMIT 6");
+while ($produto = mysqli_fetch_array($dados)):
+?>
+                        <div class="col-md-4 col-sm-6">
                             <div class="painel">
-                                <?php
-              								$conexao	=	mysqli_connect("127.0.0.1",	"root",	"",	"moz_tech");
-              								$dados	=	mysqli_query($conexao,	"SELECT	*	FROM	produtos LIMIT 3 OFFSET 6");
-              								while	($produto	=	mysqli_fetch_array($dados)):
-              							?>
                                 <li class="bg-dark">
-                                    <a href="produto.php?id=<?=	$produto['id']?>">
+                                    <a href="produto.php?id=<?=$produto['id']?>">
                                         <figure>
-                                            <img src="img/tech<?=	$produto['id']?>.jpg" alt="<?=	$produto['nome']	?>">
-                                            <figcaption class="py-2 bg-dark text-white text-center"></figcaption>
+                                            <img src="img/tech<?=$produto['id']?>.jpg" alt="<?=utf8_encode($produto['nome']);?>" class="content">
+                                            <figcaption class="py-2 bg-dark text-white text-center">
+                                              <?php echo utf8_encode($produto['preco']) . "MZN" ?>
+                                            </figcaption>
                                         </figure>
                                     </a>
                                 </li>
-                                <?php	endwhile;?>
                             </div>
                         </div>
-
-                        <div class="col-6">
-                            <div class="painel">
-                                <?php
-              								$conexao	=	mysqli_connect("127.0.0.1",	"root",	"",	"moz_tech");
-              								$dados	=	mysqli_query($conexao,	"SELECT	*	FROM	produtos LIMIT 3 OFFSET 9");
-              								while	($produto	=	mysqli_fetch_array($dados)):
-              							?>
-                                <li class="bg-dark">
-                                    <a href="produto.php?id=<?=	$produto['id']?>">
-                                        <figure>
-                                            <img src="img/tech<?=	$produto['id']?>.jpg" alt="<?=	$produto['nome']	?>">
-                                            <figcaption class="py-2 bg-dark text-white text-center"></figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <?php	endwhile;?>
-                            </div>
-                        </div>
-                    </div>
+                 <?php endwhile;?>
                 </section>
             </div>
         </div>
@@ -272,7 +235,42 @@ if (isset($_SESSION['logado'])) {
                     </a>
                 </div>
 
-                <div class="col-9"></div>
+                <div class="col-9">
+                    <div class="row mt-5 pt-5 d-painel flex-nowrap hide-block">
+                        <div class="col-md-4">
+                            <a href="">
+                                <figure >
+                                    <img src="img/hard (1).jpg" alt="Resfriador Fan Azul" class="content">
+                                    <figcaption class="py-2 bg-dark text-white text-center">
+                                        3700MZN
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a href="">
+                                <figure>
+                                    <img src="img/hard (2).jpg" alt="Processador AMD Ryzen1" class="content">
+                                    <figcaption class="py-2 bg-dark text-white text-center">
+                                        6750MZN
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a href="">
+                                <figure>
+                                    <img src="img/hard (3).jpg" alt="Chip intel Corei3 6th" class="content">
+                                    <figcaption class="py-2 bg-dark text-white text-center">
+                                        3400MZN
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -290,7 +288,42 @@ if (isset($_SESSION['logado'])) {
                     </a>
                 </div>
 
-                <div class="col-9"></div>
+                <div class="col-9">
+                    <div class="row mt-5 pt-5 d-painel flex-nowrap hide-block">
+                        <div class="col-md-4">
+                            <a href="">
+                                <figure>
+                                    <img src="img/moz1 (1).jpg" alt="">
+                                    <figcaption class="py-2 bg-dark text-white text-center">
+                                        4500MZN
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a href="">
+                                <figure>
+                                    <img src="img/moz1 (2).jpg" alt="">
+                                    <figcaption class="py-2 bg-dark text-white text-center">
+                                        6430MZN
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a href="">
+                                <figure>
+                                    <img src="img/moz1 (3).jpg" id="content" name="#content-target">
+                                    <figcaption class="py-2 bg-dark text-white text-center">
+                                        3200MZN
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -309,12 +342,14 @@ if (isset($_SESSION['logado'])) {
                 </div>
 
                 <div class="col-9">
-                    <div class="row d-painel flex-nowrap hide-block">
+                    <div class="row mt-5 pt-5 d-painel flex-nowrap hide-block">
                         <div class="col-md-4">
                             <a href="">
                                 <figure>
-                                    <img src="img/SM2280S3G2-240.jpg" alt="">
-                                    <figcaption class="py-2 bg-dark text-white text-center">LEGENDA</figcaption>
+                                    <img src="img/game (1).jpg" alt="Cadeira Gamer" class="content">
+                                    <figcaption class="py-2 bg-dark text-white text-center">
+                                        5300MZN
+                                    </figcaption>
                                 </figure>
                             </a>
                         </div>
@@ -322,8 +357,10 @@ if (isset($_SESSION['logado'])) {
                         <div class="col-md-4">
                             <a href="">
                                 <figure>
-                                    <img src="img/SM2280S3G2-240.jpg" alt="">
-                                    <figcaption class="py-2 bg-dark text-white text-center">LEGENDA</figcaption>
+                                    <img src="img/game (2).jpg" alt="Combo Gamer Teclado + Mouse" class="content">
+                                    <figcaption class="py-2 bg-dark text-white text-center">
+                                        2800MZN
+                                    </figcaption>
                                 </figure>
                             </a>
                         </div>
@@ -331,8 +368,10 @@ if (isset($_SESSION['logado'])) {
                         <div class="col-md-4">
                             <a href="">
                                 <figure>
-                                    <img src="img/SM2280S3G2-240.jpg" alt="">
-                                    <figcaption class="py-2 bg-dark text-white text-center">LEGENDA</figcaption>
+                                    <img src="img/game (3).jpg" alt="Teclado Gamer luminoso" class="content">
+                                    <figcaption class="py-2 bg-dark text-white text-center">
+                                        1200MZN
+                                    </figcaption>
                                 </figure>
                             </a>
                         </div>
@@ -342,24 +381,17 @@ if (isset($_SESSION['logado'])) {
             </div>
         </div>
     </div>
-
     <footer class="shadow bg-dark mt-1">
-        <p>aaaa</p>
-        <a href="">aaaaa</a>
     </footer>
 
 
     <script src="Bv4/js/jquery-3.4.1.min.js"></script>
     <script src="Bv4/js/bootstrap.bundle.min.js"></script>
     <script src="Bv4/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript">
-        $(function() {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-
-    </script>
-
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.capty.min.js"></script>
+<script type="text/javascript" src="js/jquery.zoom.js"></script>
+<script type="text/javascript" src="js/image.js"></script>
 </body>
-
 </html>

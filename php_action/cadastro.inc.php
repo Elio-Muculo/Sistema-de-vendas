@@ -48,7 +48,7 @@ if (isset($_POST['btn_enter'])) {
 						$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 						$sql = "INSERT INTO users (id, nome, email, senha) VALUES (NULL, '$nome', '$email', '$hashed_password')";
 						mysqli_query($connect, $sql);
-						header("Location: ../cadastro.php?signup=sucess");
+						header("Location: ../login.php?signup=sucess");
 						exit();
 					}
 				}
